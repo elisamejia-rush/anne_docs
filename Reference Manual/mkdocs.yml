@@ -1,0 +1,84 @@
+site_name: ANNE Reference Manual
+site_url: ""
+use_directory_urls: false
+site_dir: C:\Users\emejia2\OneDrive - rush.edu\Elisa Mejia\RUSH\Device team\GitHub repositories\anne\Reference manual\anne_reference\local\
+
+site author: Device team at the Rush Alzheimer's Disease Center
+
+nav:
+  # - Home: index.md
+  - Device description: description.md
+  - Data collection: collection.md 
+  - Signal processing: processing.md
+  # - Metrics: metrics.md
+  # - About: about.md
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - toc:
+      permalink: "#"
+
+theme: mkdocs 
+#theme: readthedocs
+
+#theme: mkdocs
+ # icon:
+  #  admonition:
+   #   note: material/alert-circle
+
+plugins:
+   - search
+   - print-site
+   #- with-pdf 
+
+# plugins:
+#   - exporter:
+#       formats:
+#         pdf:
+#           enabled: !ENV [MKDOCS_EXPORTER_PDF_ENABLED, true]
+
+#plugins:
+    #- with-pdf 
+
+        #author: Elisa Mejia
+        #cover: true
+        #back_cover: true
+        #cover_title: Anne Documentation
+        #cover_subtitle: Rush Alzheimer's Disease Center
+        #copyright: ANY TEXT
+        #cover: true
+        #back_cover: true
+        #cover_title: Anne Documentation
+        #cover_subtitle: Rush Alzheimer's Disease Center
+        #custom_template_path: TEMPLATES PATH      
+        #toc_title: TOC TITLE TEXT
+        #heading_shift: false
+        #toc_level: 3
+        #ordered_chapter_level: 2
+        #excludes_children:
+        #    - 'release-notes/:upgrading'
+        #    - 'release-notes/:changelog'
+        #
+        #exclude_pages:
+        #    - 'bugs/'
+        #    - 'appendix/contribute/'
+        #convert_iframe:
+        #    - src: IFRAME SRC
+        #      img: POSTER IMAGE URL
+        #      text: ALTERNATE TEXT
+        #    - src: ...
+        #two_columns_level: 3
+        #
+        #render_js: true
+        #headless_chrome_path: headless-chromium
+        #
+        #output_path: any-place/document.pdf
+        #enabled_if_env: ENABLE_PDF_EXPORT
+        #
+        #debug_html: true
+        #show_anchors: true
+        #verbose: true

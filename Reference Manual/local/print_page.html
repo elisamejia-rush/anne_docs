@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Print Site - ANNE Reference Manual</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/fontawesome.min.css" rel="stylesheet">
+        <link href="css/brands.min.css" rel="stylesheet">
+        <link href="css/solid.min.css" rel="stylesheet">
+        <link href="css/v4-font-face.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="css/print-site-enum-headings1.css" rel="stylesheet">
+        <link href="css/print-site-enum-headings2.css" rel="stylesheet">
+        <link href="css/print-site-enum-headings3.css" rel="stylesheet">
+        <link href="css/print-site-enum-headings4.css" rel="stylesheet">
+        <link href="css/print-site-enum-headings5.css" rel="stylesheet">
+        <link href="css/print-site-enum-headings6.css" rel="stylesheet">
+        <link href="css/print-site.css" rel="stylesheet">
+        <link href="css/print-site-mkdocs.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    
+        <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            remove_material_navigation();remove_mkdocs_theme_navigation();generate_toc();
+        })
+        </script>
+        </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">ANNE Reference Manual</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="description.html" class="nav-link">Device description</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="collection.html" class="nav-link">Data collection</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="processing.html" class="nav-link">Signal processing</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="metrics.html" class="nav-link">Metrics</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="0"><a href="#description" class="nav-link">1. Device description</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="0"><a href="#collection" class="nav-link">2. Data collection</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="0"><a href="#processing" class="nav-link">3. Signal processing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="0"><a href="#metrics" class="nav-link">4. Metrics</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<div id="print-site-page" class="print-site-enumerate-headings print-site-enumerate-figures">
+        <section class="print-page">
+            <div id="print-page-toc" data-toc-depth="3">
+                <nav role='navigation' class='print-page-toc-nav'>
+                <h1 class='print-page-toc-title'>Table of Contents</h1>
+                </nav>
+            </div>
+        </section>
+        <section class="print-page" id="description"><h1 id="description-what-is-the-anne">What is the Anne&#174;?<a class="headerlink" href="#description-what-is-the-anne" title="Permanent link">#</a></h1>
+<p>The Anne&#174; is a system of synced devices created by <a href="https://sibelhealth.com/">Sibel Health, Inc</a>. This system is comprised of two independent wearable devices, which are adhered to the chest and a finger, respectively.  </p>
+<p>The chest device (<a href="https://sibelhealth.com/anne-chest/">Anne&#174; Chest Sensor</a>) is a clinical-grade monitoring device that measures the electrical activity of the heart, also known as the electrocardiogram (ECG); the skin temperature; and motion activity using a triaxial accelerometer and gyroscope. From this data, it is possible to extract cardiovascular, temperature and movement features.</p>
+<p><img alt="Figure 1" src="figures/description_fig1.png" /></p>
+<p>The device located on the finger (<a href="https://sibelhealth.com/anne-limb/">Anne&#174; Limb Sensor</a>) is also a clinical-grade monitoring device which measures photoplethysmography (PPG), an optically-derived signal which varies with blood volume changes, and skin temperature. It is possible to obtain valuable temperature features and cardiovascular information, such as pulse rate and oxygen saturation (SpO<sub>2</sub>), from this device. </p>
+<p><img alt="Figure 2" src="figures/description_fig2.png" /></p>
+<p>Both devices feature battery life above 36 hours, which make them ideal for longer term monitoring without compromising signal quality. Moreover, they are internally synchronized, which implies that time-based metrics that require signals to be acquired precisely at the same instant can be reliably extracted from this system.</p>
+<p>For more details on the specifics of each device, visit the <a href="https://sibelhealth.com/">manufacturer website</a>.</p>
+<p>In addition to the devices, <a href="https://sibelhealth.com/">Sibel Health, Inc</a> provides a mobile application that can be used to configure, monitor and download data from both chest and limb sensors. This application, called <a href="https://sibelhealth.com/clinical-trials-and-research/">DiscoveryRA</a> can be used with any compatible iOS device and provides several functions to interact with the devices, including checking their battery; connecting different sensors; streaming data; and starting and stopping recordings.</p></section><section class="print-page" id="collection"><h1 id="collection-how-is-data-collected">How is data collected?<a class="headerlink" href="#collection-how-is-data-collected" title="Permanent link">#</a></h1>
+<h2 id="collection-sensor-setup"><b>Sensor setup</b><a class="headerlink" href="#collection-sensor-setup" title="Permanent link">#</a></h2>
+<p>Both the chest and limb sensors need to be prepared before being deployed to the field, where the data is collected. To do this, follow these instructions:</p>
+<ul>
+<li>Clean both sides of the Chest and Limb sensors and the charger with a cleaning wipe: </li>
+</ul>
+<p><img alt="Figure 1" src="figures/collection_fig1.png" /></p>
+<ul>
+<li>Connect the charger to a power supply, either using the wall adapter or a USB-C cable. Once connected and powered, the charger should have a blue light indicating that it is powered:</li>
+</ul>
+<p><img alt="Figure 2" src="figures/collection_fig2.png" /></p>
+<ul>
+<li>Place the sensors on the charger following the outlines on the charging surface. Make sure the logos of the sensors are aligned with the logos on the charging pad:</li>
+</ul>
+<p><img alt="Figure 3" src="figures/collection_fig3.png" /></p>
+<ul>
+<li>A green LED light on each of the sensors will blink every five seconds indicating the sensors are charging. Average duration for a full charge is 5 hours. When fully charged the green LED light will remain solid. Battery charge level can be monitored using the <a href="https://sibelhealth.com/clinical-trials-and-research/">DiscoveryRA</a> mobile application. </li>
+</ul>
+<p><img alt="Figure 4" src="figures/collection_fig4.png" /></p>
+<ul>
+<li>
+<p>Whilst the sensors are being charged, verify the firmware in both devices. <b><font color = #728FCE> Update the firmware for each device if the version installed does not correspond to the last version available</font></b>. To do this:</p>
+<ul>
+<li>
+<p>Save the last version of the firmware onto the device that's being used for configuring the Anne&#174; sensors. This should be an iOS compatible device with the <a href="https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-mobile">nRF Connect</a> app installed.</p>
+</li>
+<li>
+<p>Open the <a href="https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-mobile">nRF Connect</a> app and scan for devices. Connect to the desired Anne&#174; sensor</p>
+</li>
+</ul>
+<p><img alt="Figure 5" src="figures/collection_fig5.png" /></p>
+<ul>
+<li>Click on "Client" on the top of the screen and scroll down to "Firmware Revision String." Click the downwards arrow. Verify the current firmware on the device.</li>
+</ul>
+<p><img alt="Figure 6" src="figures/collection_fig6.png" /></p>
+<ul>
+<li>If the firmware needs to be updated, click on "DFU":</li>
+</ul>
+<p><img alt="Figure 7" src="figures/collection_fig7.png" /></p>
+<ul>
+<li>Press "Open Document Picker" on the bottom of the screen and select the correct firmware for the Anne&#174; sensor from your local files.
+<br></br></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure the firmware selected matches the Anne&#174; sensor. Limb sensors serial numbers start with L, whilst serial number for Chest sensors start with a C. Selecting the wrong firmware file may lead to complete damage of the sensor.</p>
+</div>
+<p><img alt="Figure 8" src="figures/collection_fig8.png" /></p>
+<ul>
+<li>Press "Start" and wait until the upload process finishes. The status will say "Your DFU update was completed successfully!" when the firmware is succesfully downloaded.</li>
+</ul>
+<p><img alt="Figure 9" src="figures/collection_fig9.png" /></p>
+<ul>
+<li>Connect back to the device and verify that the current firmware version on the device corresponds to the newly installed firmware by selecting "Firmware Revision String." If the update was succesful, hit "Close" and disconnect from the Anne&#174; device. Otherwise, repeat the process. </li>
+</ul>
+<p><br></br></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The current firmware version for Chest sensors is <b><a href="https://rush-my.sharepoint.com/:u:/r/personal/robert_dawe_rush_edu/Documents/RADC_Device_Group/ANNE/Firmware/Chest_v3.3.5+mT-ChestRevJ-DFU.zip?csf=1&amp;web=1&amp;e=BIu22J">3.3.5+mT_RevJ</a></b>. The current firmware version for Limb sensors is <b><a href="https://rush-my.sharepoint.com/:u:/r/personal/robert_dawe_rush_edu/Documents/RADC_Device_Group/ANNE/Firmware/v3.1.5-a52+TN-LimbRevI-DFU.zip?csf=1&amp;web=1&amp;e=eoslQR">3.1.5-a53+TN_RevI</a></b> </p>
+</div>
+<p>The firmware version can also be checked on the <a href="https://sibelhealth.com/clinical-trials-and-research/">DiscoveryRA</a> app, by connecting the Anne&#174; sensor and clicking the right arrow. In the "Settings" tab, the firmware version should be listed and correspond to the firmware uploaded using the <a href="https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-mobile">nRF Connect</a> app.  </p>
+<p><img alt="Figure 10" src="figures/collection_fig10.png" /></p>
+<ul>
+<li>Update the firmware version of the device in the <a href="https://radc.rush.edu/radc/devices/anne/listDevices.htm">Anne&#174; device list</a>.
+<br></br></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a href="https://radc.rush.edu/radc/devices/anne/listDevices.htm">RADC Anne&#174; device list</a> documents information specific to each Limb and Chest sensor including firmware, number of uses in field and status of the device.  </p>
+</div>
+</li>
+<li>
+<p>Once the batteries of both devices are fully charged, <b><font color = #728FCE> the sensors need to be paired and set in "ship mode," in which battery use is minimized until the sensors are placed on the participants </font></b>. To do this:</p>
+<ul>
+<li>
+<p>Log in to the <a href="https://sibelhealth.com/clinical-trials-and-research/">DiscoveryRA</a> app using an existing account or create one. Then, enter the project ID (ProjID) and tap "Start Session".</p>
+</li>
+<li>
+<p>Click "Add Sensors" and select one of the sensors (either Chest or Limb) you wish to pair from the list of available sensors. The name of the sensor can be retrieved from its surface. All Chest sensor names begin with CJ, whilst the Limb sensor names begin with a L. Tap "Connect" on the pop-up window, and, if prompted, select "Pair". Repeat the process with the other sensor, until both Chest and Limb sensors are connected. In the <a href="https://sibelhealth.com/clinical-trials-and-research/">DiscoveryRA</a> application, this should look like the following figure:</p>
+</li>
+</ul>
+<p><img align="left" alt="Figure 11" src="figures/collection_fig11.png" /></p>
+<ul>
+<li>
+<p>Remove the sensors from the charging pad. </p>
+</li>
+<li>
+<p>Click on the arrow next to each of the sensors. A pop-up window will show. Select "Ship Mode" in the "Settings" tab. Once the sensor is set to this mode, select "Unpair". Do the same for both sensors and then place them in the box. These sensors are ready to be used for data acquisition.</p>
+</li>
+</ul>
+<p><img alt="Figure 10" src="figures/collection_fig10.png" /></p>
+</li>
+</ul>
+<h2 id="collection-device-placement"><b>Device placement</b><a class="headerlink" href="#collection-device-placement" title="Permanent link">#</a></h2>
+<p>The fully charged, updated and configured sensors are ready to be placed in the field. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This process should be done by a trained Research Assistant (RA) during a field visit. Record of placement is recorded on the <a href="https://radc.rush.edu/radc/devices/anne/listPlacedDevices.htm">RADC devices site</a>, where the participant information (project ID, visit number), Limb and Chest sensor IDs, device status (placed, collected, returned), placement date, and expected retrieval date and staff can be found. </p>
+</div>
+<p>A succesful placement should follow these steps:</p>
+<ul>
+<li>
+<p>Place the sensors on the charger and verify that the green LED is on for both devices. <b><font color = #728FCE> Either solid green LED light (fully charged) or flashing green LED light (partially charged) indicate that the sensor is activated and ready to be placed in the participant</font></b>. </p>
+<ul>
+<li>
+<p>Once the chest sensor is removed from the charger, all LED indicators should be off. The red LED may begin to flash as it is not yet placed on the participant. Any other solid or flashing visible LED light should be consider a warning and may indicate that the sensor has not been initialized correctly. </p>
+</li>
+<li>
+<p>Once the limb sensor is removed from the charger, all lights should be off except for the red laser. Any other solid or flashing visible LED light should be consider a warning and may indicate that the sensor has not been initialized correctly.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>In the <a href="https://sibelhealth.com/clinical-trials-and-research/">DiscoveryRA</a> application connect each of the sensors to the app. Once connected, click the arrow in the right, and go to the "Stream" tab. Select "Collect Data" in the bottom right corner, and select "Start" when prompted. Do this for both sensors.</p>
+</li>
+<li>
+<p>Place the Chest sensor on the participant:</p>
+<ul>
+<li>Prep the skin at the location of the chest sensor application site using NuPrep and a q-tip and then an alcohol wipe to gently scrub away any lotion, oils, previous adhesives, dirt, loose skin, etc. Proper skin prep will improve sensor adhesion and signal quality.</li>
+</ul>
+<p><img alt="Figure 12" src="figures/collection_fig12.png" />  </p>
+<ul>
+<li>
+<p>Open the chest adhesive package and take the adhesive out of it. There are three liners covering the adhesive. One side of the adhesive is attached to the skin (covered by 1 liner) and the other is attached to the back of the Chest sensor (covered by 2 liners). To apply the adhesive on the sensor:</p>
+<ul>
+<li>Slowly peel off the blue liner labeled "Step 1." </li>
+<li>Apply the exposed half of the adhesive to the back of the chest sensor so that the black strip is aligned with the gold electrode.</li>
+<li>Slowly peel off the black liner labeled Step 2.            </li>
+<li>Gently apply pressure to ensure good contact between the adhesives and electrodes</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 13" src="figures/collection_fig13.png" /></p>
+<ul>
+<li>
+<p>Apply the sensor on the body by peeling off the liner labeled "Step 3," and placing the Chest sensor just below the suprasternal notch (space between where the clavicles meet). The top of the sensor should align with the bottom of the clavicles.</p>
+<ul>
+<li>If the red LED flashes every second, then it has not been placed correctly on the participant. </li>
+</ul>
+</li>
+</ul>
+<p><br></br></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure the logo orientation is as shown in the following figure. To ensure accurate chest sensor reading, gently apply pressure on the top and bottom of the sensor. </p>
+</div>
+<p><img alt="Figure 14" src="figures/collection_fig14.png" /></p>
+</li>
+<li>
+<p>Place the Limb sensor on the participant:</p>
+<ul>
+<li>Apply the adhesive on the sensor. To do this, lay out the adhesive with the white liner side up and peel away the middle section of the liner; then, place the limb sensor with the blue side up onto the adhesive:</li>
+</ul>
+<p><img alt="Figure 15" src="figures/collection_fig15.png" /></p>
+<ul>
+<li>Place the participant's finger on the sensor so that their nail is covering the bottom square window. Then, fold the top of the sensor and adhesive over the fingertip, ensuring the notch and bump align:</li>
+</ul>
+<p><img alt="Figure 16" src="figures/collection_fig16.png" /></p>
+<ul>
+<li>Peel off the liners on the <b>TOP</b> strips from the adhesive and wrap both tabs around the fingertip. Finally, peel off the <b>BOTTOM</b> liners from the adhesive tab and wrap around the base of the finger.</li>
+</ul>
+<p><img alt="Figure 17" src="figures/collection_fig17.png" /></p>
+</li>
+<li>
+<p>The sensors are now placed and collecting data from the participant. LED indicators on each of the sensors are used to understand the behavior of the sensors. Here is a summary of their meaning:   </p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">LED indicator</th>
+<th style="text-align: left;">Status</th>
+<th style="text-align: left;">LED pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Green</td>
+<td style="text-align: left;">No active session</td>
+<td style="text-align: left;">Blink every 3 seconds</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Not fully charged</td>
+<td style="text-align: left;">1 second on every 5 seconds</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Fully charged</td>
+<td style="text-align: left;">Solid</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">User input</td>
+<td style="text-align: left;">User defined</td>
+</tr>
+<tr>
+<td style="text-align: left;">Red</td>
+<td style="text-align: left;">System faults</td>
+<td style="text-align: left;">Solid</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Battery low level (below 20%)</td>
+<td style="text-align: left;">Blink every 3 seconds</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Low memory storage</td>
+<td style="text-align: left;">Blink every 3 seconds</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Lead off during active session</td>
+<td style="text-align: left;">Blink every 1 seconds</td>
+</tr>
+</tbody>
+</table>
+<h2 id="collection-data-retrieval"><b>Data retrieval</b><a class="headerlink" href="#collection-data-retrieval" title="Permanent link">#</a></h2>
+<p>After data collection, the Anne&#174; devices are picked up by a member of the RA team, and returned to the <a href="https://www.rushu.rush.edu/research-rush-university/departmental-research/rush-alzheimers-disease-center">Rush Alzheimer's Disease Center (RADC)</a> office. RAs are instructed to leave the devices and the Device Placement Sheet at the Device Team office, and place the sensors in chargers until an engineer from the Device Team is ready to download the data from them.  </p>
+<h3 id="collection-data-download">Data download<a class="headerlink" href="#collection-data-download" title="Permanent link">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>During the download process the devices must be placed on a charger or have a high level of charge. It takes a significant amount of time and battery power to download the acquired data from the device.</p>
+</div>
+<p>The initial step to retrieve the data is to download it to the compatible iOS devices. To do this:</p>
+<ul>
+<li>
+<p>Open the <a href="https://sibelhealth.com/clinical-trials-and-research/">DiscoveryRA</a> app and start a session.</p>
+</li>
+<li>
+<p>Select "Add Sensors" and add only the sensor pair you want to download data from. <b><font color = #728FCE>Data can only be downloaded from one sensor pair at a time per compatible iOS device</font></b>.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check storage used in each of the Anne&#174; sensors. The Chest sensor should have about 50% of its storage used for a 36-hours recording. The Limb device should have about 10% of its storage used for a 36-hours recording. A significant difference from these values of used storage may indicate a problem with data collection in the field and should be recorded on the device page once download is complete. </p>
+<p>Engineers can only add notes to the device page when selecting "Download complete" at the end of the upload process.</p>
+</div>
+<ul>
+<li>Use the blue arrow to the right and select the "Stream" tab. Within the "Stream" view, there is a "Download" button at the bottom. Select "Download". Repeat this for both the limb and chest sensor.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Once you start the download you can view the progress bar of the download at any time within the "Stream" tab. The chest sensor will require around 8 hours for download. The limb sensors require approximately 30 minutes for download.</p>
+</div>
+<ul>
+<li>When the download is complete the progress bar will disappear, and the data will be removed from the device. The storage used should now be 0%. <b><font color = #728FCE>If the progress bar disappears and storage is not at 0%, the download failed and must be repeated</font></b>. </li>
+</ul>
+<p>Once the download is complete the devices should be prepared for the field, i.e. cleaned and charged, as explained above.</p>
+<h3 id="collection-data-upload">Data upload<a class="headerlink" href="#collection-data-upload" title="Permanent link">#</a></h3>
+<p>Once the data is downloaded to the iOS compatible device, the downloaded files need to be uploaded to the <a href="https://radc.rush.edu/radc/">RADC server</a>. This is done by copying the files to the <a href="https://rush-my.sharepoint.com/:f:/r/personal/tiffany_c_wu_rush_edu/Documents/ANNE_uploads?csf=1&amp;web=1&amp;e=XaNKPw">uploads folder</a> in OneDrive. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The access to the OneDrive folder needs to be granted by the Data Management team.</p>
+</div>
+<p>After the download process, there are two files that contain the information from the sensors and one log file. These files need to be transferred to a computer via AirDrop or by a wired connection:</p>
+<ul>
+<li>
+<p>AirDrop files from iOS device to Mac computer:</p>
+<ul>
+<li>After logging in to a Mac computer using their Rush credentials, the engineer should go to the "Finder" desktop application and select the "AirDrop" option on the left navigation menu. Change the discoverability settings on the Mac to "Everyone." 
+<br></br></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If WiFi is turned off on the Mac, it will prompt you to enable it in order to use AirDrop.</p>
+</div>
+<ul>
+<li>
+<p>On the iOS device, go to "On My iPad/DiscoveryRA/shrd/". In this folder, there should be two files with extension <i>.shrd</i> related to the pair of sensors of interest. The file related to the Chest sensor should have the following structure: <i>raw_chest_cj{ChestID}<em>..._shrd</i>, where <i>{ChestID}</i> corresponds to the numerical code of the Chest sensor used to acquire the data; similarly, the file name for the Limb sensor data should have this structure: <i>raw_limb_l{LimbID}</em>…_.shrd</i>, with <i>{LimbID}</i> corresponding to the numerical code of the Limb sensor of interest.</p>
+<p>For each of these two files, select them and navigate to the "Share" option in the Finder. Select AirDrop and select the name of Mac computer (JS0905MAC01). The selected file will be transferred to the Mac computer using AirDrop. </p>
+</li>
+<li>
+<p>On the iOS device, go to "On My iPad/DiscoveryRA/log/". In this folder, there should be one file with extension <i>.log</i> related to the day at which the download of the data was performed. </p>
+<p>Select the corresponding file and navigate to the "Share" option in the Finder. Select AirDrop and select the name of the Mac computer (JS0905MAC01). The selected file will be transferred to the Mac computer using AirDrop. </p>
+</li>
+<li>
+<p>On the Mac there will be a pop-up to accept the shared file(s). Allow the share. The files will be saved to the "Downloads" location in the Finder. </p>
+</li>
+<li>
+<p>On the Mac browser, sign in to OneDrive and navigate to the folder <a href="https://rush-my.sharepoint.com/:f:/r/personal/tiffany_c_wu_rush_edu/Documents/ANNE_uploads?csf=1&amp;web=1&amp;e=XaNKPw">uploads folder</a>. </p>
+</li>
+<li>
+<p>Create a folder within <a href="https://rush-my.sharepoint.com/:f:/r/personal/tiffany_c_wu_rush_edu/Documents/ANNE_uploads?csf=1&amp;web=1&amp;e=XaNKPw">ANNE Uploads/incoming</a> with the following format: <i>{ProjectID} _ {Follow-up year} _ {Placement date}</i>. ProjectID corresponds to the 9-digit ID for each participant; follow-up year corresponds to a 2-digit number indicating the number of years the participant has been followed-up; and the placement date should have a YYYYMMDD format. </p>
+</li>
+<li>
+<p>Move the transferred files from "Downloads" to this folder, and wait until the files are uploaded to OneDrive.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Transfer files with wired cable connection from iOS device to computer:</p>
+<ul>
+<li>
+<p>After logging in to a computer using their Rush credentials, physically connect the iOS device to the computer using a USB cable. Both devices may ask for permission to connect, which should be granted to proceed.</p>
+</li>
+<li>
+<p>On the iOS device, go to "On My iPad/DiscoveryRA/shrd/". In this folder, there should be two files with extension <i>.shrd</i> related to the pair of sensors of interest. The file related to the Chest sensor should have the following structure: <i>raw_chest_cj{ChestID}<em>..._shrd</i>, where <i>{ChestID}</i> corresponds to the numerical code of the Chest sensor used to acquire the data; similarly, the file name for the Limb sensor data should have this structure: <i>raw_limb_l{LimbID}</em>…_.shrd</i>, with <i>{LimbID}</i> corresponding to the numerical code of the Limb sensor of interest. Place these two files in the DiscoveryRA folder. </p>
+</li>
+<li>
+<p>On the iOS device, go to "On My iPad/DiscoveryRA/log/". In this folder, there should be one file with extension <i>.log</i> related to the day at which the download of the data was performed. Place this file in the "DiscoveryRA: folder. </p>
+</li>
+<li>
+<p>On the computer, locate the File Explorer and identify the location of the connected iOS device. Navigate to the "DiscoveryRA" folder. Drag and drop the files of interest to any location in the computer. </p>
+</li>
+<li>
+<p>On a browser in the computer, sign in to OneDrive and navigate to the folder <a href="https://rush-my.sharepoint.com/:f:/r/personal/tiffany_c_wu_rush_edu/Documents/ANNE_uploads?csf=1&amp;web=1&amp;e=XaNKPw">uploads folder</a>. </p>
+</li>
+<li>
+<p>Create a folder within <a href="https://rush-my.sharepoint.com/:f:/r/personal/tiffany_c_wu_rush_edu/Documents/ANNE_uploads?csf=1&amp;web=1&amp;e=XaNKPw">ANNE Uploads/incoming</a> with the following format: <i>{ProjectID} _ {Follow-up year} _ {Placement date}</i>. ProjectID corresponds to the 9-digit ID for each participant; follow-up year corresponds to a 2-digit number indicating the number of years the participant has been followed-up; and the placement date should have a YYYYMMDD format. </p>
+</li>
+<li>
+<p>Move the transferred files from the computer to this folder, and wait until the files are uploaded to OneDrive.</p>
+</li>
+<li>
+<p>The device engineer should record their 3-digit ID in the last column of the Device Placement Sheet upon upload of data.</p>
+</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Raw chest and limb data are <i>.shrd</i> files. They are named with the sensor ID. Check this information compared to the Device Placement sheet to ensure it is correct to avoid errors during upload. </p>
+</div>
+<p>Once data is on the OneDrive, make sure to update the status of the device in the <a href="https://radc.rush.edu/radc/devices/anne/listPlacedDevices.htm">RADC devices site</a> by clicking the "Download complete" button corresponding to the data uploaded. <b><font color = #728FCE>If there was any issue with the download or upload processes (such as shorter recordings than expected) make sure to flag the download and describe the issue in the "Comments" section</font></b>. If there was a "Module error" during the download process, go to the <a href="https://radc.rush.edu/radc/devices/anne/listDevices.htm">RADC Anne&#174; device listing</a> and update the "Status" of the corresponding sensor to "FAILED." </p>
+<p>Data in the OneDrive is automatically transferred to the Rush server at specific times every week. </p>
+<h3 id="collection-unencrypt-data">Unencrypt data<a class="headerlink" href="#collection-unencrypt-data" title="Permanent link">#</a></h3>
+<p>Data acquired from the Anne&#174; sensors need to be unzipped and unencripted for further analysis. This is done using two separate files: <a href="https://rush-my.sharepoint.com/:u:/r/personal/robert_dawe_rush_edu/Documents/RADC_Device_Group/ANNE/Parsers%20and%20Analysis%20Code/Parsers/Windows%20Sibel%20SHRD%20Processor%20v0.3.5/segno_cli-x86_64-windows-0.3.5.exe?csf=1&amp;web=1&amp;e=d7lBj0"><i>segno_....exe</i></a> and <a href="https://rush-my.sharepoint.com/:u:/r/personal/robert_dawe_rush_edu/Documents/RADC_Device_Group/ANNE/Parsers%20and%20Analysis%20Code/Parsers/cfg.yml?csf=1&amp;web=1&amp;e=ZXuam1"><i>cfg.yml</i></a>. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each of these files is named based on their version for corresponding firmware and supported operating systems. </p>
+</div>
+<p>To convert the <i>.shrd</i> files into usable <i>.csv</i> and <i>.edf</i> files, use the following command in Windows Command Line, set to the directory where the executable and configuration files are located:</p>
+<div class="highlight"><pre><span></span><code>&quot;segno_cli-x86_64-windows-0.3.5.exe&quot; -c &quot;chest.shrd&quot; -l &quot;limb.shrd&quot; -o &quot;output.directory&quot; -n &quot;prefix&quot; -cfg &quot;cfg.yml&quot;
+</code></pre></div>
+<p>Data that has been uploaded to the <a href="https://radc.rush.edu/radc/">RADC server</a> is compressed into <i>.tar.gz</i> format. To untar the folders on Windows to access the <i>.shrd</i> files use the following command in Windows Command Line, set to the directory where the <i>.shrd</i> files should be stored: </p>
+<div class="highlight"><pre><span></span><code>tar -xvzf &#39;C:\PATH\FILE.tar.gz&#39;
+</code></pre></div>
+<p><The ReadMe document linked below defines which supported system, known issues, and troubleshooting. - (Link?)>
+<The software is located in *RADC_Device_Group/ANNE/Parsers and Analysis Code/Parsers*. The files needed are the executable in the *Windows Sibel SHRD Processor v0.3.5* or *MacOS.Sibel.SHRD.Processor.v0.3.5* folder and *cfg.yml*.>  </p>
+<h2 id="collection-what-are-the-device-outputs"><b>What are the device outputs?</b><a class="headerlink" href="#collection-what-are-the-device-outputs" title="Permanent link">#</a></h2>
+<p>After unencrypting the <i>.shrd</i> files, the following <i>.csv</i> files are obtained:</p>
+<ul>
+<li>Anne&#174; Chest:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">File name</th>
+<th style="text-align: left;">Sampling rate (Hz)</th>
+<th style="text-align: left;">Columns (units)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">{prefix} _accl_gyro_raw.csv</td>
+<td style="text-align: left;">210</td>
+<td style="text-align: left;">Time (ms), Velocity X (degrees per second, dps), Velocity Y (dps), Velocity Z (dps), Accl X (g), Accl Y (g), Accl Z (g)</td>
+</tr>
+<tr>
+<td style="text-align: left;">{prefix} _ecg_raw.csv</td>
+<td style="text-align: left;">512</td>
+<td style="text-align: left;">Time(ms), ECG Amplitude(mV), ADC</td>
+</tr>
+<tr>
+<td style="text-align: left;">{prefix} _chest_temp_raw.csv</td>
+<td style="text-align: left;">0.25</td>
+<td style="text-align: left;">Time(ms), Chest Temp(Celsius)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Anne&#174; Limb:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">File name</th>
+<th style="text-align: left;">Sampling rate (Hz)</th>
+<th style="text-align: left;">Columns (units)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">{prefix} _ppg_raw.csv</td>
+<td style="text-align: left;">128</td>
+<td style="text-align: left;">Time (ms), Red (nA), IR (nA)</td>
+</tr>
+<tr>
+<td style="text-align: left;">{prefix} _limb_temp_raw.csv</td>
+<td style="text-align: left;">0.25</td>
+<td style="text-align: left;">Time(ms), Limb Temp (Celsius)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Summary files: </li>
+</ul>
+<p>In addition, a file with estimated vital signs is obtained. This file is sampled every second (1 Hz) and contains the following columns, with their respective units: Time(ms), HR(bpm), ECG SQI, SpO2(%), PI(%), PR(bpm), PPG SQI, RR(rpm), RR SQI, RR Channel, Accl X(g), Accl Y(g), Accl Z(g), PAT(ms), Chest Temp(Celsius), Limb Temp(Celsius)  </p>
+<p><br> <br></p></section><section class="print-page" id="processing"><h1 id="processing-signal-processing">Signal processing<a class="headerlink" href="#processing-signal-processing" title="Permanent link">#</a></h1>
+<p>From the <i>.csv</i> files obtained after unencrypting the <i>.shrd</i> files, multiple processing steps take place. In general, the algorithm follows this structure:</p>
+<p><img alt="Figure 1" src="figures/processing_fig1.png" /></p>
+<p>The following sections include an in-depth description of these steps.</p>
+<h2 id="processing-segmenting-of-data-based-on-temperature">Segmenting of data based on temperature<a class="headerlink" href="#processing-segmenting-of-data-based-on-temperature" title="Permanent link">#</a></h2>
+<p>The initial steps of the processing algorithm are focused on identifying when the sensors are disconnected from the subject. This is done based on temperature readings from both the Anne&#174; Chest sensor and the Anne&#174; Limb sensor, as follows:</p>
+<p><img alt="Figure 2" src="figures/processing_fig2.png" /></p>
+<p>After identifying the termination times, the signals can be preprocessed and segmented within the times of interest, i.e., when the participant have been wearing both Anne&#174; sensors simultaneously.</p>
+<h2 id="processing-pre-processing-of-signals">Pre-processing of signals<a class="headerlink" href="#processing-pre-processing-of-signals" title="Permanent link">#</a></h2>
+<h3 id="processing-ecg-signals">ECG signals<a class="headerlink" href="#processing-ecg-signals" title="Permanent link">#</a></h3>
+<p>The preprocessing for ECG signals consists in segmenting the data, flipping the signal if necessary, resampling to a fixed sampling rate using interpolation, and removing timing synchonization spikes introduced by the Anne&#174; firmware. This synchronization spikes occur every second and are intended to synchronize the internal clocks from both Anne&#174; devices. </p>
+<p><img alt="Figure 3" src="figures/processing_fig3.png" /></p>
+<h3 id="processing-ppg-signals">PPG signals<a class="headerlink" href="#processing-ppg-signals" title="Permanent link">#</a></h3>
+<p>In a similar way, PPG signals are initially segmented according to the start and termination times, then the red and infrared PPG signals are substracted to obtain a single PPG signal, which is the filtered to remove the baseline. Finally, this signal is also resampled using interpolation and the timing synchronization spikes are removed:</p>
+<p><img alt="Figure 4" src="figures/processing_fig4.png" /></p>
+<h3 id="processing-imu-data">IMU data<a class="headerlink" href="#processing-imu-data" title="Permanent link">#</a></h3>
+<p>The accelerometer data obtain from the triaxial accelerometer Anne&#174; Chest sensor is resampled to a fixed sampling rate and filtered before any additional processing is performed:  </p>
+<p><img alt="Figure 5" src="figures/processing_fig5.png" /></p>
+<p>As a reference, this is the coordinate system used by the Anne&#174; Chest sensor:</p>
+<p><img alt="Figure 15" src="figures/processing_fig15.png" /></p>
+<h3 id="processing-temperature-data">Temperature data<a class="headerlink" href="#processing-temperature-data" title="Permanent link">#</a></h3>
+<p>The temperature information, obtained independently from both Anne&#174; sensors, is resampled to the most frequent sampling rate, according to the median value of the difference between consecutive timing points for the temperature data acquired.  </p>
+<h2 id="processing-cardiovascular-signal-analysis">Cardiovascular signal analysis<a class="headerlink" href="#processing-cardiovascular-signal-analysis" title="Permanent link">#</a></h2>
+<h3 id="processing-heart-rate-estimation-from-ecg">Heart rate estimation from ECG<a class="headerlink" href="#processing-heart-rate-estimation-from-ecg" title="Permanent link">#</a></h3>
+<h4 id="processing-qrs-detection">QRS detection<a class="headerlink" href="#processing-qrs-detection" title="Permanent link">#</a></h4>
+<p>The initial step for ECG processing is identifying the location of QRS complexes, and extracting some features from them. These features will later be used for signal quality estimation and filtering of the ECG cardiac cycles. The following diagram depicts the QRS detection algorithm:</p>
+<p><img alt="Figure 6" src="figures/processing_fig6.png" /></p>
+<h4 id="processing-quality-assessment-for-r-to-r-intervals">Quality assessment for R-to-R intervals<a class="headerlink" href="#processing-quality-assessment-for-r-to-r-intervals" title="Permanent link">#</a></h4>
+<p>After QRS complexes are detected, their quality is assessed based on a clustering algorithm: </p>
+<p><img alt="Figure 7" src="figures/processing_fig7.png" /></p>
+<h4 id="processing-heart-rate-estimation">Heart rate estimation<a class="headerlink" href="#processing-heart-rate-estimation" title="Permanent link">#</a></h4>
+<p>Instantaneous heart rates are then estimated using the R-to-R intervals, and these are corrected as explained in the following diagram: </p>
+<p><img alt="Figure 8" src="figures/processing_fig8.png" /></p>
+<h3 id="processing-pulse-rate-estimation-from-ppg">Pulse rate estimation from PPG<a class="headerlink" href="#processing-pulse-rate-estimation-from-ppg" title="Permanent link">#</a></h3>
+<h3 id="processing-fiducial-point-detection">Fiducial point detection<a class="headerlink" href="#processing-fiducial-point-detection" title="Permanent link">#</a></h3>
+<p>The cardiac cycle detection from PPG signals is done by identifying fiducial points from each cardiac pulse wave. Also, an initial estimation of signal quality for these cardiac cycles is initially performed, as shown in the following diagram:</p>
+<p><img alt="Figure 9" src="figures/processing_fig9.png" /></p>
+<h4 id="processing-quality-assessment-for-interbeat-intervals">Quality assessment for interbeat intervals<a class="headerlink" href="#processing-quality-assessment-for-interbeat-intervals" title="Permanent link">#</a></h4>
+<p>As was done with the ECG-derived cardiac intervals, the quality of interbeat intervals obtained from the fiducial point detection from PPG signals was assessed. Similarly, a clustering algorithm based on HDBSCAN was applied to identify the cardiac cycles with acceptable quality:</p>
+<p><img alt="Figure 10" src="figures/processing_fig10.png" /></p>
+<h4 id="processing-pulse-rate-estimation">Pulse rate estimation<a class="headerlink" href="#processing-pulse-rate-estimation" title="Permanent link">#</a></h4>
+<p>Instantaneous pulse rates are then estimated using the interbeat intervals considered of good quality. As done with heart rate estimates, these values are also corrected and their outliers are removed. In this case, pulse rates are estimated from the time differences between consecutive maximum slope points and between consecutive peaks, following the same process as for the heart rate estimates from the ECG. </p>
+<h4 id="processing-oxygen-saturation">Oxygen saturation<a class="headerlink" href="#processing-oxygen-saturation" title="Permanent link">#</a></h4>
+<p>The Anne&#174; system returns an oxygen saturation (SpO2) measure every second. However, this is not synchronized with the rest of the data obtained from the Anne&#174; devices. Hence, the information regarding oxygen saturation is used to correct this synchronization:</p>
+<p><img alt="Figure 11" src="figures/processing_fig11.png" /></p>
+<h3 id="processing-pulse-arrival-time-pat-analysis">Pulse arrival time (PAT) analysis<a class="headerlink" href="#processing-pulse-arrival-time-pat-analysis" title="Permanent link">#</a></h3>
+<p>In the cases when both ECG and PPG analysis is successful it is possible to extract matched metrics from features obtained from these two signals. Here, Pulse Arrival Time (PAT) and matched heart rate measures are extracted:</p>
+<p><img alt="Figure 12" src="figures/processing_fig12.png" /></p>
+<h2 id="processing-features-from-imu-data">Features from IMU data<a class="headerlink" href="#processing-features-from-imu-data" title="Permanent link">#</a></h2>
+<p>Several features are extracted from the accelerometers, especially for identifying the body position of the subject:</p>
+<p><img alt="Figure 13" src="figures/processing_fig13.png" /></p>
+<h2 id="processing-derivation-of-respiratory-information">Derivation of respiratory information<a class="headerlink" href="#processing-derivation-of-respiratory-information" title="Permanent link">#</a></h2>
+<p>From the ECG, the PPG, the PAT and the accelerometers, it is possible to derive respiratory information. The initial approach to derive respiratory information from any of these sources is as follows: </p>
+<p><img alt="Figure 14" src="figures/processing_fig14.png" /></p>
+<p>From the ECG, two independent respiratory estimations are obtained, from the amplitudes of the R peaks and the estimated heart rates. </p>
+<p>From the PPG, respiratory information are obtained using the amplitudes of cardiac cycles measured as the difference between onsets and peaks, the amplitudes measured as the difference between maximum slope points and peaks, and the estimated pulse rates. In addition, respiratory information is obtained from PAT measures estimated using the maximum slope points and the R peaks.</p>
+<p>Finally, respiratory information is obtained from the X, Y and Z channels from the accelerometer, as well as from the L2 norm between X and Z (XZ).</p>
+<h2 id="processing-outputs">Outputs<a class="headerlink" href="#processing-outputs" title="Permanent link">#</a></h2>
+<p>The general processing algorithm outputs one <i>.edf</i> file with the following data:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Signal</th>
+<th style="text-align: left;">Header name</th>
+<th style="text-align: left;">Description [units]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ECG</td>
+<td style="text-align: left;">ecgRaw</td>
+<td style="text-align: left;">Raw ECG signal, sampled at 100 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ecgProcessed</td>
+<td style="text-align: left;">ECG signal resulting after Wavelet filtering, sampled at 100 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">zeroCrossingRate</td>
+<td style="text-align: left;">Rate of QRS complexes that cross zero, sampled at 100 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ecgSQI</td>
+<td style="text-align: left;">Signal quality indices for QRS complexes based on Hilbert transform, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ECG.SQI</td>
+<td style="text-align: left;">Signal quality indices for ECG based on comparison between consecutive beats, , sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ECGamp</td>
+<td style="text-align: left;">Amplitude of QRS complexes, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">HR.ECG</td>
+<td style="text-align: left;">Instantaneous heart rate measured from ECG, sampled at 10 Hz [beats per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ECGamp.filt</td>
+<td style="text-align: left;">Respiratory signal estimate extracted from the changes in QRS amplitudes, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RR.ECGamp</td>
+<td style="text-align: left;">Instantaneous respiratory rate measured from the changes in QRS amplitudes, sampled at 1 Hz [breaths per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRamp.ECGamp</td>
+<td style="text-align: left;">Amplitude of respiratory cycles extracted from the changes in QRS amplitudes, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRsqi.ECGamp</td>
+<td style="text-align: left;">Signal quality metric for respiratory estimates extracted from the changes in QRS amplitudes, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">HRecg.filt</td>
+<td style="text-align: left;">Respiratory signal estimate extracted from the changes in QRS amplitudes, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RR.HRecg</td>
+<td style="text-align: left;">Instantaneous respiratory rate measured from the changes in heart rate, sampled at 1 Hz [breaths per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRamp.HRecg</td>
+<td style="text-align: left;">Amplitude of respiratory cycles extracted from the changes in heart rate, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRsqi.HRecg</td>
+<td style="text-align: left;">Signal quality metric for respiratory estimates extracted from the changes in heart rate, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ecgRRraw</td>
+<td style="text-align: left;">Instantaneous duration of R-to-R intervals, sampled at 100 Hz [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ecgRRint</td>
+<td style="text-align: left;">Instantaneous duration of R-to-R intervals after signal quality filtering, sampled at 100 Hz [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">PPG</td>
+<td style="text-align: left;">ppgRaw</td>
+<td style="text-align: left;">Raw PPG signal, sampled at 100 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ppgFiltered</td>
+<td style="text-align: left;">Filtered PPG signal, sampled at 100 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ppgSQI</td>
+<td style="text-align: left;">Signal quality indices for PPG beats based on Gaussian functions, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">PPG.SQI</td>
+<td style="text-align: left;">Signal quality indices for PPG based on comparison between consecutive beats, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">PPGamp</td>
+<td style="text-align: left;">Amplitude of PPG cardiac cycles from the onset to the peak, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">PPGfootpeak</td>
+<td style="text-align: left;">Amplitude of PPG cardiac cycles from the maximum slope point to the peak, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">HR.PPG</td>
+<td style="text-align: left;">Instantaneous heart rate measured from PPG, sampled at 10 Hz [beats per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">PAT</td>
+<td style="text-align: left;">Instantaneous pulse arrival time, sampled at 10 Hz [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">PAT.SQI</td>
+<td style="text-align: left;">Signal quality indices for PAT based on comparison between consecutive beats, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">HR.combi</td>
+<td style="text-align: left;">Instantaneous heart rate measured from ECG and PPG, sampled at 10 Hz [beats per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">SpO2</td>
+<td style="text-align: left;">Oxygen saturation, sampled at 10 Hz [%]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">PPGfootpeak.filt</td>
+<td style="text-align: left;">Respiratory signal estimate extracted from the changes in maximum slope point to peak amplitudes, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">PPGamp.filt</td>
+<td style="text-align: left;">Respiratory signal estimate extracted from the changes in onset to peak amplitudes, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RR.PPGamp</td>
+<td style="text-align: left;">Instantaneous respiratory rate measured from the changes in onset to peak amplitudes, sampled at 1 Hz [breaths per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRamp.PPGamp</td>
+<td style="text-align: left;">Amplitude of respiratory cycles extracted from the changes in onset to peak amplitudes, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRsqi.PPGamp</td>
+<td style="text-align: left;">Signal quality metric for respiratory estimates extracted from the changes in onset to peak amplitudes, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">HRppg.filt</td>
+<td style="text-align: left;">Respiratory signal estimate extracted from the changes in pulse rate, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RR.HRppg</td>
+<td style="text-align: left;">Instantaneous respiratory rate measured from the changes in pulse rate, sampled at 1 Hz [breaths per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRamp.HRppg</td>
+<td style="text-align: left;">Amplitude of respiratory cycles extracted from the changes in pulse rate, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRsqi.HRppg</td>
+<td style="text-align: left;">Signal quality metric for respiratory estimates extracted from the changes in pulse rate, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">PAT.filt</td>
+<td style="text-align: left;">Respiratory signal estimate extracted from the pulse arrival time, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RR.PAT</td>
+<td style="text-align: left;">Instantaneous respiratory rate measured from the pulse arrival time, sampled at 1 Hz [breaths per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRamp.PAT</td>
+<td style="text-align: left;">Amplitude of respiratory cycles extracted from the pulse arrival time, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRsqi.PAT</td>
+<td style="text-align: left;">Signal quality metric for respiratory estimates extracted from the pulse arrival time, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ppgMMraw</td>
+<td style="text-align: left;">Instantaneous duration of cardiac cycles based on maximum slope point locations, sampled at 100 Hz [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ppgMMint</td>
+<td style="text-align: left;">Instantaneous duration of cardiac cycles based on maximum slope point locations after signal quality filtering, sampled at 100 Hz [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ppgNNraw</td>
+<td style="text-align: left;">Instantaneous duration of cardiac cycles based on peak locations, sampled at 100 Hz [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ppgNNint</td>
+<td style="text-align: left;">Instantaneous duration of cardiac cycles based on peak locations after signal quality filtering, sampled at 100 Hz [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">Accelerometers</td>
+<td style="text-align: left;">x</td>
+<td style="text-align: left;">X-channel from accelerometer after moing average filtering, sampled at 100 Hz [G]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">y</td>
+<td style="text-align: left;">Y-channel from accelerometer after moing average filtering, sampled at 100 Hz [G]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">z</td>
+<td style="text-align: left;">Z-channel from accelerometer after moing average filtering, sampled at 100 Hz [G]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">position</td>
+<td style="text-align: left;">Position of the body at any instant, sampled at 10 Hz [0: upright; -1: side; -2: back; -3: front]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">theta</td>
+<td style="text-align: left;">Angle of recline measured as arctan(-x/(sqrt(y^2 + z^2))), sampled at 10 Hz [degrees]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">phi</td>
+<td style="text-align: left;">Angle of inclination measured as arctan(y/z), sampled at 10 Hz [degrees]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ENMO</td>
+<td style="text-align: left;">Euclidean norm minus one measured as</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">x.filt</td>
+<td style="text-align: left;">Respiratory signal estimate extracted from the X-channel, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RR.x</td>
+<td style="text-align: left;">Instantaneous respiratory rate measured from the X-channel, sampled at 1 Hz [breaths per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRamp.x</td>
+<td style="text-align: left;">Amplitude of respiratory cycles extracted from the X-channel, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRsqi.x</td>
+<td style="text-align: left;">Signal quality metric for respiratory estimates extracted from the X-channel, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">y.filt</td>
+<td style="text-align: left;">Respiratory signal estimate extracted from the Y-channel, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RR.y</td>
+<td style="text-align: left;">Instantaneous respiratory rate measured from the Y-channel, sampled at 1 Hz [breaths per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRamp.y</td>
+<td style="text-align: left;">Amplitude of respiratory cycles extracted from the Y-channel, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRsqi.y</td>
+<td style="text-align: left;">Signal quality metric for respiratory estimates extracted from the X-channel, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">z.filt</td>
+<td style="text-align: left;">Respiratory signal estimate extracted from the Z-channel, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RR.z</td>
+<td style="text-align: left;">Instantaneous respiratory rate measured from the Z-channel, sampled at 1 Hz [breaths per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRamp.z</td>
+<td style="text-align: left;">Amplitude of respiratory cycles extracted from the Z-channel, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRsqi.z</td>
+<td style="text-align: left;">Signal quality metric for respiratory estimates extracted from the X-channel, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RR.xz</td>
+<td style="text-align: left;">Instantaneous respiratory rate measured from the L2 norm of X- and Z-channels, sampled at 1 Hz [breaths per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRamp.xz</td>
+<td style="text-align: left;">Amplitude of respiratory cycles extracted from the L2 norm of X- and Z-channels, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRsqi.xz</td>
+<td style="text-align: left;">Signal quality metric for respiratory estimates extracted from the L2 norm of X- and Z-channels, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;">Temperature</td>
+<td style="text-align: left;">chestTemp</td>
+<td style="text-align: left;">Chest temperature, sampled at 1 Hz [degrees Celsius]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">limbTemp</td>
+<td style="text-align: left;">Limb temperature, sampled at 1 Hz [degrees Celsius]</td>
+</tr>
+</tbody>
+</table>
+<p>This file is named as <i>{File prefix}-features.edf</i>, where <i>{File prefix}</i> has the followinfg structure: <i>{ProjectID} _ {Follow-up year} _ {Placement date}_{Start time}</i>.</p>
+<p>In addition to the <i>.edf</i> file, the following <i>.csv</i> files are obtained after the algorithm is run:</p>
+<ul>
+<li>
+<p>Spikes file (<i>{File prefix}-spikes.csv</i>): Single column <i>.csv</i> file with the times at which synchronization spikes were detected in the PPG signal.  </p>
+</li>
+<li>
+<p>ECG peaks file (<i>{File prefix}-peaksECG.csv</i>): Features extracted from the ECG signal. These are: </p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Description [units]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ECGsqi</td>
+<td style="text-align: left;">Signal quality indices based on the Hilbert transform for each QRS complex identified from the ECG signal</td>
+</tr>
+<tr>
+<td style="text-align: left;">Rpeaks</td>
+<td style="text-align: left;">Timings for the identified R peaks [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">ECGamp</td>
+<td style="text-align: left;">Amplitude of identified R peaks, measured as the difference between the peaks and the valleys</td>
+</tr>
+<tr>
+<td style="text-align: left;">peakamp</td>
+<td style="text-align: left;">Absolute amplitude of the peaks, measured as the absolute difference of each peak minus the baseline of the ECG</td>
+</tr>
+<tr>
+<td style="text-align: left;">valleyamp</td>
+<td style="text-align: left;">Absolute amplitude of the valleys, measured as the absolute difference of each valley minus the baseline of the ECG</td>
+</tr>
+<tr>
+<td style="text-align: left;">envelopeamp</td>
+<td style="text-align: left;">Amplitude of peaks identified in the envelope of the filtered ECG signal</td>
+</tr>
+<tr>
+<td style="text-align: left;">spikiness</td>
+<td style="text-align: left;">Amplitude of the maximum value of the envelope in a window centered in the detected R peak with a size of 10% of the sampling rate</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>PPG peaks file (<i>{File prefix}-peaksPPG.csv</i>): Features extracted from the PPG signal. These are: </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Description [units]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">PPGsqi</td>
+<td style="text-align: left;">Signal quality indices based on the correlation with Gaussian functions for each cardiac cycle identified from the PPG signal</td>
+</tr>
+<tr>
+<td style="text-align: left;">Peaks</td>
+<td style="text-align: left;">Timings for the identified peaks at each cardiac cycle [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">Feet</td>
+<td style="text-align: left;">Timings for the identified valleys at each cardiac cycle [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mids</td>
+<td style="text-align: left;">Timings for the identified maximum slope point at each cardiac cycle [seconds]</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Beatdata file (<i>{File prefix}-beatdata.csv</i>): Features extracted from the ECG and PPG signals, and from the combined analysis for PAT estimation. It includes both the ECG and PPG features from matched cycles and these additional features:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Description [units]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">zcr</td>
+<td style="text-align: left;">Rate of zero crossing for each QRS complex</td>
+</tr>
+<tr>
+<td style="text-align: left;">s</td>
+<td style="text-align: left;">Rolling standard deviation of the instantaneous heart rate [beats per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;">z</td>
+<td style="text-align: left;">Rolling standard deviation of the zero crossing rate</td>
+</tr>
+<tr>
+<td style="text-align: left;">beat</td>
+<td style="text-align: left;">Number of the beat from the ECG</td>
+</tr>
+<tr>
+<td style="text-align: left;">peak_to_valley</td>
+<td style="text-align: left;">Absolute ratio between the amplitude of the peak and the amplitude of the valley for each QRS complex</td>
+</tr>
+<tr>
+<td style="text-align: left;">QC</td>
+<td style="text-align: left;">Signal quality metric for each QRS complex based on clustering [True, False]</td>
+</tr>
+<tr>
+<td style="text-align: left;">ecgRRraw</td>
+<td style="text-align: left;">Instantaneous duration of R-to-R intervals [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">ecgRRint</td>
+<td style="text-align: left;">Instantaneous duration of R-to-R intervals after signal quality filtering [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">HR.ECG</td>
+<td style="text-align: left;">Instantaneous heart rate measured from the ECG after signal quality filtering and outlier removal [beats per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;">ECGamp</td>
+<td style="text-align: left;">Amplitude of QRS complexes after outlier removal</td>
+</tr>
+<tr>
+<td style="text-align: left;">zcr.1</td>
+<td style="text-align: left;">Rate of zero crossing for each cardiac cycle identified in the PPG signal</td>
+</tr>
+<tr>
+<td style="text-align: left;">PPGamp</td>
+<td style="text-align: left;">Amplitude of the cardiac cycles measured as the difference between the amplitude of the peak and the onset</td>
+</tr>
+<tr>
+<td style="text-align: left;">PPGfootpeak</td>
+<td style="text-align: left;">Amplitude of the cardiac cycles measured as the difference between the amplitude of the peak and the maximum slope point</td>
+</tr>
+<tr>
+<td style="text-align: left;">ends</td>
+<td style="text-align: left;">Timings for the ending point of each cardiac cycle, as the timings of the maximum slope points [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">duration</td>
+<td style="text-align: left;">Duration of each cardiac cycle, measured as the time difference between consecutive maximum slope points [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">PPGpeakfoot</td>
+<td style="text-align: left;">Duration of the cycle between the peak and the subsequent maximum slope point [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">beats</td>
+<td style="text-align: left;">Number of the beat from the PPG</td>
+</tr>
+<tr>
+<td style="text-align: left;">SS</td>
+<td style="text-align: left;">Signal quality metric for each PPG cardiac cycle based on its similarity to a template defined by clustering</td>
+</tr>
+<tr>
+<td style="text-align: left;">include</td>
+<td style="text-align: left;">Boolean indicating if the cardiac cycle is to be included in subsequent analyses [True, False]</td>
+</tr>
+<tr>
+<td style="text-align: left;">ppgMMraw</td>
+<td style="text-align: left;">Instantaneous duration of interbeat intervals based on peaks [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">ppgMMint</td>
+<td style="text-align: left;">Instantaneous duration of interbeat intervals based on peaks after signal quality filtering [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">ppgNNraw</td>
+<td style="text-align: left;">Instantaneous duration of interbeat intervals based on maximum slope points [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">ppgNNint</td>
+<td style="text-align: left;">Instantaneous duration of interbeat intervals based on maximum slope points after signal quality filtering [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">HR.PPG</td>
+<td style="text-align: left;">Instantaneous pulse rate measured from the PPG after signal quality filtering and outlier removal [beats per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;">R.clean</td>
+<td style="text-align: left;">Timings for R peaks considered for PAT estimation based on the synchrony between ECG R peaks and PPG maximum slope points [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">PATfeet</td>
+<td style="text-align: left;">Pulse arrival time measured between the R peaks and the onset of the PPG cardiac cycles [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">PAT</td>
+<td style="text-align: left;">Pulse arrival time measured between the R peaks and the maximum slope point of the PPG cardiac cycles [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">HR.combi</td>
+<td style="text-align: left;">Instantaneous heart rate measured from both ECG and PPG, after signal quality filtering and outlier removal [beats per minute]</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Quality control file (<i>{File prefix}-QC.csv</i>): Mean value of the signal quality indices for each of the signals, based on the behaviour between consecutive points. The <i>.csv</i> files contains a single column with:</p>
+<ol>
+<li>The identification code for the file.</li>
+<li>The mean value of the signal quality metric for the PPG, ECG and PAT data, respectively.</li>
+<li>The mean value of the signal quality array for the PPG, ECG and PAT data, respectively. This value indicates if the average duration of longer runs of good quality signal portions for each of the signals was greater than 200 seconds.</li>
+<li>Gross lag between ECG and PPG, considered for PAT estimation.</li>
+</ol>
+</li>
+</ul></section><section class="print-page" id="metrics"><h1 id="metrics-what-metrics-do-we-measure">What metrics do we measure?<a class="headerlink" href="#metrics-what-metrics-do-we-measure" title="Permanent link">#</a></h1></section></div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "/",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="js/print-site.js"></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
