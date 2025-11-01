@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://example.com/processing/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Signal processing - ANNE Reference Manual</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">ANNE Reference Manual</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../description/" class="nav-link">Device description</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../collection/" class="nav-link">Data collection</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Signal processing</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../collection/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#signal-processing" class="nav-link">Signal processing</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#segmenting-of-data-based-on-temperature" class="nav-link">Segmenting of data based on temperature</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#pre-processing-of-signals" class="nav-link">Pre-processing of signals</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#cardiovascular-signal-analysis" class="nav-link">Cardiovascular signal analysis</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#features-from-imu-data" class="nav-link">Features from IMU data</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#derivation-of-respiratory-information" class="nav-link">Derivation of respiratory information</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#outputs" class="nav-link">Outputs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="signal-processing">Signal processing<a class="headerlink" href="#signal-processing" title="Permanent link">#</a></h1>
+<p>From the <i>.csv</i> files obtained after unencrypting the <i>.shrd</i> files, multiple processing steps take place. In general, the algorithm follows this structure:</p>
+<p><img alt="Figure 1" src="../figures/processing_fig1.png" /></p>
+<p>The following sections include an in-depth description of these steps.</p>
+<h2 id="segmenting-of-data-based-on-temperature">Segmenting of data based on temperature<a class="headerlink" href="#segmenting-of-data-based-on-temperature" title="Permanent link">#</a></h2>
+<p>The initial steps of the processing algorithm are focused on identifying when the sensors are disconnected from the subject. This is done based on temperature readings from both the Anne&#174; Chest sensor and the Anne&#174; Limb sensor, as follows:</p>
+<p><img alt="Figure 2" src="../figures/processing_fig2.png" /></p>
+<p>After identifying the termination times, the signals can be preprocessed and segmented within the times of interest, i.e., when the participant have been wearing both Anne&#174; sensors simultaneously.</p>
+<h2 id="pre-processing-of-signals">Pre-processing of signals<a class="headerlink" href="#pre-processing-of-signals" title="Permanent link">#</a></h2>
+<h3 id="ecg-signals">ECG signals<a class="headerlink" href="#ecg-signals" title="Permanent link">#</a></h3>
+<p>The preprocessing for ECG signals consists in segmenting the data, flipping the signal if necessary, resampling to a fixed sampling rate using interpolation, and removing timing synchonization spikes introduced by the Anne&#174; firmware. This synchronization spikes occur every second and are intended to synchronize the internal clocks from both Anne&#174; devices. </p>
+<p><img alt="Figure 3" src="../figures/processing_fig3.png" /></p>
+<h3 id="ppg-signals">PPG signals<a class="headerlink" href="#ppg-signals" title="Permanent link">#</a></h3>
+<p>In a similar way, PPG signals are initially segmented according to the start and termination times, then the red and infrared PPG signals are substracted to obtain a single PPG signal, which is the filtered to remove the baseline. Finally, this signal is also resampled using interpolation and the timing synchronization spikes are removed:</p>
+<p><img alt="Figure 4" src="../figures/processing_fig4.png" /></p>
+<h3 id="imu-data">IMU data<a class="headerlink" href="#imu-data" title="Permanent link">#</a></h3>
+<p>The accelerometer data obtain from the triaxial accelerometer Anne&#174; Chest sensor is resampled to a fixed sampling rate and filtered before any additional processing is performed:  </p>
+<p><img alt="Figure 5" src="../figures/processing_fig5.png" /></p>
+<p>As a reference, this is the coordinate system used by the Anne&#174; Chest sensor:</p>
+<p><img alt="Figure 15" src="../figures/processing_fig15.png" /></p>
+<h3 id="temperature-data">Temperature data<a class="headerlink" href="#temperature-data" title="Permanent link">#</a></h3>
+<p>The temperature information, obtained independently from both Anne&#174; sensors, is resampled to the most frequent sampling rate, according to the median value of the difference between consecutive timing points for the temperature data acquired.  </p>
+<h2 id="cardiovascular-signal-analysis">Cardiovascular signal analysis<a class="headerlink" href="#cardiovascular-signal-analysis" title="Permanent link">#</a></h2>
+<h3 id="heart-rate-estimation-from-ecg">Heart rate estimation from ECG<a class="headerlink" href="#heart-rate-estimation-from-ecg" title="Permanent link">#</a></h3>
+<h4 id="qrs-detection">QRS detection<a class="headerlink" href="#qrs-detection" title="Permanent link">#</a></h4>
+<p>The initial step for ECG processing is identifying the location of QRS complexes, and extracting some features from them. These features will later be used for signal quality estimation and filtering of the ECG cardiac cycles. The following diagram depicts the QRS detection algorithm:</p>
+<p><img alt="Figure 6" src="../figures/processing_fig6.png" /></p>
+<h4 id="quality-assessment-for-r-to-r-intervals">Quality assessment for R-to-R intervals<a class="headerlink" href="#quality-assessment-for-r-to-r-intervals" title="Permanent link">#</a></h4>
+<p>After QRS complexes are detected, their quality is assessed based on a clustering algorithm: </p>
+<p><img alt="Figure 7" src="../figures/processing_fig7.png" /></p>
+<h4 id="heart-rate-estimation">Heart rate estimation<a class="headerlink" href="#heart-rate-estimation" title="Permanent link">#</a></h4>
+<p>Instantaneous heart rates are then estimated using the R-to-R intervals, and these are corrected as explained in the following diagram: </p>
+<p><img alt="Figure 8" src="../figures/processing_fig8.png" /></p>
+<h3 id="pulse-rate-estimation-from-ppg">Pulse rate estimation from PPG<a class="headerlink" href="#pulse-rate-estimation-from-ppg" title="Permanent link">#</a></h3>
+<h3 id="fiducial-point-detection">Fiducial point detection<a class="headerlink" href="#fiducial-point-detection" title="Permanent link">#</a></h3>
+<p>The cardiac cycle detection from PPG signals is done by identifying fiducial points from each cardiac pulse wave. Also, an initial estimation of signal quality for these cardiac cycles is initially performed, as shown in the following diagram:</p>
+<p><img alt="Figure 9" src="../figures/processing_fig9.png" /></p>
+<h4 id="quality-assessment-for-interbeat-intervals">Quality assessment for interbeat intervals<a class="headerlink" href="#quality-assessment-for-interbeat-intervals" title="Permanent link">#</a></h4>
+<p>As was done with the ECG-derived cardiac intervals, the quality of interbeat intervals obtained from the fiducial point detection from PPG signals was assessed. Similarly, a clustering algorithm based on HDBSCAN was applied to identify the cardiac cycles with acceptable quality:</p>
+<p><img alt="Figure 10" src="../figures/processing_fig10.png" /></p>
+<h4 id="pulse-rate-estimation">Pulse rate estimation<a class="headerlink" href="#pulse-rate-estimation" title="Permanent link">#</a></h4>
+<p>Instantaneous pulse rates are then estimated using the interbeat intervals considered of good quality. As done with heart rate estimates, these values are also corrected and their outliers are removed. In this case, pulse rates are estimated from the time differences between consecutive maximum slope points and between consecutive peaks, following the same process as for the heart rate estimates from the ECG. </p>
+<h4 id="oxygen-saturation">Oxygen saturation<a class="headerlink" href="#oxygen-saturation" title="Permanent link">#</a></h4>
+<p>The Anne&#174; system returns an oxygen saturation (SpO2) measure every second. However, this is not synchronized with the rest of the data obtained from the Anne&#174; devices. Hence, the information regarding oxygen saturation is used to correct this synchronization:</p>
+<p><img alt="Figure 11" src="../figures/processing_fig11.png" /></p>
+<h3 id="pulse-arrival-time-pat-analysis">Pulse arrival time (PAT) analysis<a class="headerlink" href="#pulse-arrival-time-pat-analysis" title="Permanent link">#</a></h3>
+<p>In the cases when both ECG and PPG analysis is successful it is possible to extract matched metrics from features obtained from these two signals. Here, Pulse Arrival Time (PAT) and matched heart rate measures are extracted:</p>
+<p><img alt="Figure 12" src="../figures/processing_fig12.png" /></p>
+<h2 id="features-from-imu-data">Features from IMU data<a class="headerlink" href="#features-from-imu-data" title="Permanent link">#</a></h2>
+<p>Several features are extracted from the accelerometers, especially for identifying the body position of the subject:</p>
+<p><img alt="Figure 13" src="../figures/processing_fig13.png" /></p>
+<h2 id="derivation-of-respiratory-information">Derivation of respiratory information<a class="headerlink" href="#derivation-of-respiratory-information" title="Permanent link">#</a></h2>
+<p>From the ECG, the PPG, the PAT and the accelerometers, it is possible to derive respiratory information. The initial approach to derive respiratory information from any of these sources is as follows: </p>
+<p><img alt="Figure 14" src="../figures/processing_fig14.png" /></p>
+<p>From the ECG, two independent respiratory estimations are obtained, from the amplitudes of the R peaks and the estimated heart rates. </p>
+<p>From the PPG, respiratory information are obtained using the amplitudes of cardiac cycles measured as the difference between onsets and peaks, the amplitudes measured as the difference between maximum slope points and peaks, and the estimated pulse rates. In addition, respiratory information is obtained from PAT measures estimated using the maximum slope points and the R peaks.</p>
+<p>Finally, respiratory information is obtained from the X, Y and Z channels from the accelerometer, as well as from the L2 norm between X and Z (XZ).</p>
+<h2 id="outputs">Outputs<a class="headerlink" href="#outputs" title="Permanent link">#</a></h2>
+<p>The general processing algorithm outputs one <i>.edf</i> file with the following data:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Signal</th>
+<th style="text-align: left;">Header name</th>
+<th style="text-align: left;">Description [units]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ECG</td>
+<td style="text-align: left;">ecgRaw</td>
+<td style="text-align: left;">Raw ECG signal, sampled at 100 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ecgProcessed</td>
+<td style="text-align: left;">ECG signal resulting after Wavelet filtering, sampled at 100 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">zeroCrossingRate</td>
+<td style="text-align: left;">Rate of QRS complexes that cross zero, sampled at 100 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ecgSQI</td>
+<td style="text-align: left;">Signal quality indices for QRS complexes based on Hilbert transform, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ECG.SQI</td>
+<td style="text-align: left;">Signal quality indices for ECG based on comparison between consecutive beats, , sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ECGamp</td>
+<td style="text-align: left;">Amplitude of QRS complexes, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">HR.ECG</td>
+<td style="text-align: left;">Instantaneous heart rate measured from ECG, sampled at 10 Hz [beats per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ECGamp.filt</td>
+<td style="text-align: left;">Respiratory signal estimate extracted from the changes in QRS amplitudes, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RR.ECGamp</td>
+<td style="text-align: left;">Instantaneous respiratory rate measured from the changes in QRS amplitudes, sampled at 1 Hz [breaths per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRamp.ECGamp</td>
+<td style="text-align: left;">Amplitude of respiratory cycles extracted from the changes in QRS amplitudes, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRsqi.ECGamp</td>
+<td style="text-align: left;">Signal quality metric for respiratory estimates extracted from the changes in QRS amplitudes, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">HRecg.filt</td>
+<td style="text-align: left;">Respiratory signal estimate extracted from the changes in QRS amplitudes, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RR.HRecg</td>
+<td style="text-align: left;">Instantaneous respiratory rate measured from the changes in heart rate, sampled at 1 Hz [breaths per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRamp.HRecg</td>
+<td style="text-align: left;">Amplitude of respiratory cycles extracted from the changes in heart rate, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRsqi.HRecg</td>
+<td style="text-align: left;">Signal quality metric for respiratory estimates extracted from the changes in heart rate, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ecgRRraw</td>
+<td style="text-align: left;">Instantaneous duration of R-to-R intervals, sampled at 100 Hz [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ecgRRint</td>
+<td style="text-align: left;">Instantaneous duration of R-to-R intervals after signal quality filtering, sampled at 100 Hz [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">PPG</td>
+<td style="text-align: left;">ppgRaw</td>
+<td style="text-align: left;">Raw PPG signal, sampled at 100 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ppgFiltered</td>
+<td style="text-align: left;">Filtered PPG signal, sampled at 100 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ppgSQI</td>
+<td style="text-align: left;">Signal quality indices for PPG beats based on Gaussian functions, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">PPG.SQI</td>
+<td style="text-align: left;">Signal quality indices for PPG based on comparison between consecutive beats, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">PPGamp</td>
+<td style="text-align: left;">Amplitude of PPG cardiac cycles from the onset to the peak, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">PPGfootpeak</td>
+<td style="text-align: left;">Amplitude of PPG cardiac cycles from the maximum slope point to the peak, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">HR.PPG</td>
+<td style="text-align: left;">Instantaneous heart rate measured from PPG, sampled at 10 Hz [beats per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">PAT</td>
+<td style="text-align: left;">Instantaneous pulse arrival time, sampled at 10 Hz [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">PAT.SQI</td>
+<td style="text-align: left;">Signal quality indices for PAT based on comparison between consecutive beats, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">HR.combi</td>
+<td style="text-align: left;">Instantaneous heart rate measured from ECG and PPG, sampled at 10 Hz [beats per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">SpO2</td>
+<td style="text-align: left;">Oxygen saturation, sampled at 10 Hz [%]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">PPGfootpeak.filt</td>
+<td style="text-align: left;">Respiratory signal estimate extracted from the changes in maximum slope point to peak amplitudes, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">PPGamp.filt</td>
+<td style="text-align: left;">Respiratory signal estimate extracted from the changes in onset to peak amplitudes, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RR.PPGamp</td>
+<td style="text-align: left;">Instantaneous respiratory rate measured from the changes in onset to peak amplitudes, sampled at 1 Hz [breaths per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRamp.PPGamp</td>
+<td style="text-align: left;">Amplitude of respiratory cycles extracted from the changes in onset to peak amplitudes, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRsqi.PPGamp</td>
+<td style="text-align: left;">Signal quality metric for respiratory estimates extracted from the changes in onset to peak amplitudes, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">HRppg.filt</td>
+<td style="text-align: left;">Respiratory signal estimate extracted from the changes in pulse rate, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RR.HRppg</td>
+<td style="text-align: left;">Instantaneous respiratory rate measured from the changes in pulse rate, sampled at 1 Hz [breaths per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRamp.HRppg</td>
+<td style="text-align: left;">Amplitude of respiratory cycles extracted from the changes in pulse rate, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRsqi.HRppg</td>
+<td style="text-align: left;">Signal quality metric for respiratory estimates extracted from the changes in pulse rate, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">PAT.filt</td>
+<td style="text-align: left;">Respiratory signal estimate extracted from the pulse arrival time, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RR.PAT</td>
+<td style="text-align: left;">Instantaneous respiratory rate measured from the pulse arrival time, sampled at 1 Hz [breaths per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRamp.PAT</td>
+<td style="text-align: left;">Amplitude of respiratory cycles extracted from the pulse arrival time, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRsqi.PAT</td>
+<td style="text-align: left;">Signal quality metric for respiratory estimates extracted from the pulse arrival time, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ppgMMraw</td>
+<td style="text-align: left;">Instantaneous duration of cardiac cycles based on maximum slope point locations, sampled at 100 Hz [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ppgMMint</td>
+<td style="text-align: left;">Instantaneous duration of cardiac cycles based on maximum slope point locations after signal quality filtering, sampled at 100 Hz [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ppgNNraw</td>
+<td style="text-align: left;">Instantaneous duration of cardiac cycles based on peak locations, sampled at 100 Hz [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ppgNNint</td>
+<td style="text-align: left;">Instantaneous duration of cardiac cycles based on peak locations after signal quality filtering, sampled at 100 Hz [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">Accelerometers</td>
+<td style="text-align: left;">x</td>
+<td style="text-align: left;">X-channel from accelerometer after moing average filtering, sampled at 100 Hz [G]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">y</td>
+<td style="text-align: left;">Y-channel from accelerometer after moing average filtering, sampled at 100 Hz [G]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">z</td>
+<td style="text-align: left;">Z-channel from accelerometer after moing average filtering, sampled at 100 Hz [G]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">position</td>
+<td style="text-align: left;">Position of the body at any instant, sampled at 10 Hz [0: upright; -1: side; -2: back; -3: front]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">theta</td>
+<td style="text-align: left;">Angle of recline measured as arctan(-x/(sqrt(y^2 + z^2))), sampled at 10 Hz [degrees]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">phi</td>
+<td style="text-align: left;">Angle of inclination measured as arctan(y/z), sampled at 10 Hz [degrees]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ENMO</td>
+<td style="text-align: left;">Euclidean norm minus one measured as</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">x.filt</td>
+<td style="text-align: left;">Respiratory signal estimate extracted from the X-channel, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RR.x</td>
+<td style="text-align: left;">Instantaneous respiratory rate measured from the X-channel, sampled at 1 Hz [breaths per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRamp.x</td>
+<td style="text-align: left;">Amplitude of respiratory cycles extracted from the X-channel, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRsqi.x</td>
+<td style="text-align: left;">Signal quality metric for respiratory estimates extracted from the X-channel, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">y.filt</td>
+<td style="text-align: left;">Respiratory signal estimate extracted from the Y-channel, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RR.y</td>
+<td style="text-align: left;">Instantaneous respiratory rate measured from the Y-channel, sampled at 1 Hz [breaths per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRamp.y</td>
+<td style="text-align: left;">Amplitude of respiratory cycles extracted from the Y-channel, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRsqi.y</td>
+<td style="text-align: left;">Signal quality metric for respiratory estimates extracted from the X-channel, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">z.filt</td>
+<td style="text-align: left;">Respiratory signal estimate extracted from the Z-channel, sampled at 10 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RR.z</td>
+<td style="text-align: left;">Instantaneous respiratory rate measured from the Z-channel, sampled at 1 Hz [breaths per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRamp.z</td>
+<td style="text-align: left;">Amplitude of respiratory cycles extracted from the Z-channel, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRsqi.z</td>
+<td style="text-align: left;">Signal quality metric for respiratory estimates extracted from the X-channel, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RR.xz</td>
+<td style="text-align: left;">Instantaneous respiratory rate measured from the L2 norm of X- and Z-channels, sampled at 1 Hz [breaths per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRamp.xz</td>
+<td style="text-align: left;">Amplitude of respiratory cycles extracted from the L2 norm of X- and Z-channels, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RRsqi.xz</td>
+<td style="text-align: left;">Signal quality metric for respiratory estimates extracted from the L2 norm of X- and Z-channels, sampled at 1 Hz</td>
+</tr>
+<tr>
+<td style="text-align: left;">Temperature</td>
+<td style="text-align: left;">chestTemp</td>
+<td style="text-align: left;">Chest temperature, sampled at 1 Hz [degrees Celsius]</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">limbTemp</td>
+<td style="text-align: left;">Limb temperature, sampled at 1 Hz [degrees Celsius]</td>
+</tr>
+</tbody>
+</table>
+<p>This file is named as <i>{File prefix}-features.edf</i>, where <i>{File prefix}</i> has the followinfg structure: <i>{ProjectID} _ {Follow-up year} _ {Placement date}_{Start time}</i>.</p>
+<p>In addition to the <i>.edf</i> file, the following <i>.csv</i> files are obtained after the algorithm is run:</p>
+<ul>
+<li>
+<p>Spikes file (<i>{File prefix}-spikes.csv</i>): Single column <i>.csv</i> file with the times at which synchronization spikes were detected in the PPG signal.  </p>
+</li>
+<li>
+<p>ECG peaks file (<i>{File prefix}-peaksECG.csv</i>): Features extracted from the ECG signal. These are: </p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Description [units]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ECGsqi</td>
+<td style="text-align: left;">Signal quality indices based on the Hilbert transform for each QRS complex identified from the ECG signal</td>
+</tr>
+<tr>
+<td style="text-align: left;">Rpeaks</td>
+<td style="text-align: left;">Timings for the identified R peaks [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">ECGamp</td>
+<td style="text-align: left;">Amplitude of identified R peaks, measured as the difference between the peaks and the valleys</td>
+</tr>
+<tr>
+<td style="text-align: left;">peakamp</td>
+<td style="text-align: left;">Absolute amplitude of the peaks, measured as the absolute difference of each peak minus the baseline of the ECG</td>
+</tr>
+<tr>
+<td style="text-align: left;">valleyamp</td>
+<td style="text-align: left;">Absolute amplitude of the valleys, measured as the absolute difference of each valley minus the baseline of the ECG</td>
+</tr>
+<tr>
+<td style="text-align: left;">envelopeamp</td>
+<td style="text-align: left;">Amplitude of peaks identified in the envelope of the filtered ECG signal</td>
+</tr>
+<tr>
+<td style="text-align: left;">spikiness</td>
+<td style="text-align: left;">Amplitude of the maximum value of the envelope in a window centered in the detected R peak with a size of 10% of the sampling rate</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>PPG peaks file (<i>{File prefix}-peaksPPG.csv</i>): Features extracted from the PPG signal. These are: </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Description [units]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">PPGsqi</td>
+<td style="text-align: left;">Signal quality indices based on the correlation with Gaussian functions for each cardiac cycle identified from the PPG signal</td>
+</tr>
+<tr>
+<td style="text-align: left;">Peaks</td>
+<td style="text-align: left;">Timings for the identified peaks at each cardiac cycle [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">Feet</td>
+<td style="text-align: left;">Timings for the identified valleys at each cardiac cycle [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mids</td>
+<td style="text-align: left;">Timings for the identified maximum slope point at each cardiac cycle [seconds]</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Beatdata file (<i>{File prefix}-beatdata.csv</i>): Features extracted from the ECG and PPG signals, and from the combined analysis for PAT estimation. It includes both the ECG and PPG features from matched cycles and these additional features:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Description [units]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">zcr</td>
+<td style="text-align: left;">Rate of zero crossing for each QRS complex</td>
+</tr>
+<tr>
+<td style="text-align: left;">s</td>
+<td style="text-align: left;">Rolling standard deviation of the instantaneous heart rate [beats per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;">z</td>
+<td style="text-align: left;">Rolling standard deviation of the zero crossing rate</td>
+</tr>
+<tr>
+<td style="text-align: left;">beat</td>
+<td style="text-align: left;">Number of the beat from the ECG</td>
+</tr>
+<tr>
+<td style="text-align: left;">peak_to_valley</td>
+<td style="text-align: left;">Absolute ratio between the amplitude of the peak and the amplitude of the valley for each QRS complex</td>
+</tr>
+<tr>
+<td style="text-align: left;">QC</td>
+<td style="text-align: left;">Signal quality metric for each QRS complex based on clustering [True, False]</td>
+</tr>
+<tr>
+<td style="text-align: left;">ecgRRraw</td>
+<td style="text-align: left;">Instantaneous duration of R-to-R intervals [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">ecgRRint</td>
+<td style="text-align: left;">Instantaneous duration of R-to-R intervals after signal quality filtering [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">HR.ECG</td>
+<td style="text-align: left;">Instantaneous heart rate measured from the ECG after signal quality filtering and outlier removal [beats per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;">ECGamp</td>
+<td style="text-align: left;">Amplitude of QRS complexes after outlier removal</td>
+</tr>
+<tr>
+<td style="text-align: left;">zcr.1</td>
+<td style="text-align: left;">Rate of zero crossing for each cardiac cycle identified in the PPG signal</td>
+</tr>
+<tr>
+<td style="text-align: left;">PPGamp</td>
+<td style="text-align: left;">Amplitude of the cardiac cycles measured as the difference between the amplitude of the peak and the onset</td>
+</tr>
+<tr>
+<td style="text-align: left;">PPGfootpeak</td>
+<td style="text-align: left;">Amplitude of the cardiac cycles measured as the difference between the amplitude of the peak and the maximum slope point</td>
+</tr>
+<tr>
+<td style="text-align: left;">ends</td>
+<td style="text-align: left;">Timings for the ending point of each cardiac cycle, as the timings of the maximum slope points [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">duration</td>
+<td style="text-align: left;">Duration of each cardiac cycle, measured as the time difference between consecutive maximum slope points [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">PPGpeakfoot</td>
+<td style="text-align: left;">Duration of the cycle between the peak and the subsequent maximum slope point [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">beats</td>
+<td style="text-align: left;">Number of the beat from the PPG</td>
+</tr>
+<tr>
+<td style="text-align: left;">SS</td>
+<td style="text-align: left;">Signal quality metric for each PPG cardiac cycle based on its similarity to a template defined by clustering</td>
+</tr>
+<tr>
+<td style="text-align: left;">include</td>
+<td style="text-align: left;">Boolean indicating if the cardiac cycle is to be included in subsequent analyses [True, False]</td>
+</tr>
+<tr>
+<td style="text-align: left;">ppgMMraw</td>
+<td style="text-align: left;">Instantaneous duration of interbeat intervals based on peaks [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">ppgMMint</td>
+<td style="text-align: left;">Instantaneous duration of interbeat intervals based on peaks after signal quality filtering [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">ppgNNraw</td>
+<td style="text-align: left;">Instantaneous duration of interbeat intervals based on maximum slope points [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">ppgNNint</td>
+<td style="text-align: left;">Instantaneous duration of interbeat intervals based on maximum slope points after signal quality filtering [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">HR.PPG</td>
+<td style="text-align: left;">Instantaneous pulse rate measured from the PPG after signal quality filtering and outlier removal [beats per minute]</td>
+</tr>
+<tr>
+<td style="text-align: left;">R.clean</td>
+<td style="text-align: left;">Timings for R peaks considered for PAT estimation based on the synchrony between ECG R peaks and PPG maximum slope points [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">PATfeet</td>
+<td style="text-align: left;">Pulse arrival time measured between the R peaks and the onset of the PPG cardiac cycles [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">PAT</td>
+<td style="text-align: left;">Pulse arrival time measured between the R peaks and the maximum slope point of the PPG cardiac cycles [seconds]</td>
+</tr>
+<tr>
+<td style="text-align: left;">HR.combi</td>
+<td style="text-align: left;">Instantaneous heart rate measured from both ECG and PPG, after signal quality filtering and outlier removal [beats per minute]</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Quality control file (<i>{File prefix}-QC.csv</i>): Mean value of the signal quality indices for each of the signals, based on the behaviour between consecutive points. The <i>.csv</i> files contains a single column with:</p>
+<ol>
+<li>The identification code for the file.</li>
+<li>The mean value of the signal quality metric for the PPG, ECG and PAT data, respectively.</li>
+<li>The mean value of the signal quality array for the PPG, ECG and PAT data, respectively. This value indicates if the average duration of longer runs of good quality signal portions for each of the signals was greater than 200 seconds.</li>
+<li>Gross lag between ECG and PPG, considered for PAT estimation.</li>
+</ol>
+</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

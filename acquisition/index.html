@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://example.com/acquisition/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>How is data acquired? - ANNE Reference Manual</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">ANNE Reference Manual</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../description/" class="nav-link">Device description</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../collection/" class="nav-link">Data collection</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../processing/" class="nav-link">Signal processing</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#how-is-data-acquired" class="nav-link">How is data acquired?</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#how-is-data-retrieved" class="nav-link">How is data retrieved?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#what-are-the-device-outputs" class="nav-link">What are the device outputs?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="how-is-data-acquired">How is data acquired?<a class="headerlink" href="#how-is-data-acquired" title="Permanent link">#</a></h1>
+<h2 id="how-is-data-retrieved">How is data retrieved?<a class="headerlink" href="#how-is-data-retrieved" title="Permanent link">#</a></h2>
+<ul>
+<li>Conversion software requires two scripts (segno CLI executable and configuration yaml). Each segno.exe and ctu_config.yml is named based on their version for corresponding firmware and supported operating systems.  </li>
+<li>The ReadMe document linked below defines which supported system, known issues, and troubleshooting.  <ul>
+<li>(Link?)  </li>
+</ul>
+</li>
+<li>The software is located in <em>RADC_Device_Group/ANNE/Parsers and Analysis Code/Parsers</em>.  <ul>
+<li>The files needed are the executable in the <em>Windows Sibel SHRD Processor v0.3.5</em> or <em>MacOS.Sibel.SHRD.Processor.v0.3.5</em> folder and <em>cfg.yml</em>.  </li>
+</ul>
+</li>
+<li>The RADC data is compressed into .tar.gz format. To untar the folders on Windows to access the .shrd files use the following command:<br />
+<div class="highlight"><pre><span></span><code>tar -xvzf &#39;C:\PATH\FILE.tar.gz&#39;
+</code></pre></div></li>
+<li>To convert the .shrd files into usable .csv and .edf files, use the following command:<br />
+<div class="highlight"><pre><span></span><code>&quot;segno_cli-x86_64-windows-0.3.5.exe&quot; -c &quot;chest.shrd&quot; -l &quot;limb.shrd&quot; -o &quot;output.directory&quot; -n &quot;prefix&quot; -cfg &quot;cfg.yml&quot;
+</code></pre></div></li>
+</ul>
+<h2 id="what-are-the-device-outputs">What are the device outputs?<a class="headerlink" href="#what-are-the-device-outputs" title="Permanent link">#</a></h2>
+<h3 id="chest">Chest<a class="headerlink" href="#chest" title="Permanent link">#</a></h3>
+<details> 
+<summary>prefix_accl_gyro_raw.csv</summary>
+
+Specs:  
+- Fs: 210 Hz  
+- Headings: Time(ms), Velocity X(dps), Velocity Y(dps), Velocity Z(dps), Accl X(g), Accl Y(g), Accl Z(g)  
+</details>
+
+<details> 
+<summary>prefix_ecg_raw.csv</summary>
+
+Specs:  
+- Fs: 512 Hz  
+- Headings: Time(ms), ECG Amplitude(mV), ADC   
+</details>
+
+<details> 
+<summary>prefix_chest_temp_raw.csv</summary>
+
+Specs:  
+- Fs: 0.25 Hz  
+- Headings: Time(ms), Chest Temp(Celsius)  
+</details>
+<p><br> </p>
+<h3 id="limb">Limb<a class="headerlink" href="#limb" title="Permanent link">#</a></h3>
+<details> 
+<summary>prefix_ppg_raw.csv</summary>
+
+Specs:  
+- Fs: 129 Hz  
+- Headings: Time(ms), Red(nA), IR(nA)  
+</details>
+
+<details> 
+<summary>prefix_limb_temp_raw.csv</summary>
+
+Specs:  
+- Fs: 0.25 Hz  
+- Headings: Time(ms), Limb Temp(Celsius)  
+</details>
+<p><br> </p>
+<h3 id="summary-files">Summary Files<a class="headerlink" href="#summary-files" title="Permanent link">#</a></h3>
+<details> 
+<summary>prefix_vitals.csv</summary>
+
+Specs:  
+- Fs: 1 Hz  
+- Headings: Time(ms), HR(bpm), ECG SQI, SpO2(%), PI(%), PR(bpm), PPG SQI, RR(rpm), RR SQI, RR Channel, Accl X(g), Accl Y(g), Accl Z(g), PAT(ms), Chest Temp(Celsius), Limb Temp(Celsius)  
+</details>
+
+<p><br> <br></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
