@@ -1,0 +1,26 @@
+site_name: ANNE Reference Manual
+site_url: https://example.com
+#use_directory_urls: false
+#site_dir: C:\Users\emejia2\OneDrive - rush.edu\Elisa Mejia\RUSH\Device team\GitHub repositories\anne\Reference manual\anne_reference\local\
+site author: Device team at the Rush Alzheimer's Disease Center
+
+nav:
+  #- Home: index.md
+  - Device description: description.md
+  - Data collection: collection.md 
+  # - Signal acquisition: acquisition.md
+  - Signal processing: processing.md
+  # - Metrics: metrics.md
+  # - About: about.md
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - toc:
+      permalink: "#"
+
+theme: mkdocs 
+#theme: readthedocs
